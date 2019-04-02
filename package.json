@@ -1,0 +1,47 @@
+{
+  "name": "jskos-validate",
+  "version": "0.2.0",
+  "description": "Validation for JSKOS data.",
+  "homepage": "https://github.com/gbv/jskos-validate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gbv/jskos-validate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gbv/jskos-validate/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint ./*.js ./**/*.js ./bin/*",
+    "fix": "eslint --fix ./*.js ./**/*.js ./bin/*",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "test",
+    "lint-staged"
+  ],
+  "author": "Stefan Peters",
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "glob": "^7.1.2",
+    "lint-staged": "^7.3.0",
+    "mocha": "^5.2.0",
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "ajv": "^6.5.2",
+    "lodash": "^4.17.11"
+  }
+}

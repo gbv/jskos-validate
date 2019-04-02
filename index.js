@@ -1,17 +1,15 @@
 /**
- * JSKOS Tools.
- * @module jskos-tools
+ * JSKOS Validation.
+ * @module jskos-validate
  */
 
 /**
  * Version of the [JSKOS specification](http://gbv.github.io/jskos/)
  * that this module is based on.
  */
-const version = "0.4.2"
+const version = "0.4.4"
 
-const validate = require("./lib/validate")
-const identifiers = require("./lib/identifiers")
-const tools = require("./lib/tools")
-const ConceptScheme = require("./lib/concept-scheme")
+let validate = require("./lib/validate")
+validate.version = version
 
-module.exports = Object.assign({ validate, version, ConceptScheme}, identifiers, tools)
+module.exports = validate
