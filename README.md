@@ -47,7 +47,7 @@ validate.mapping(mapping) // returns true or false
 Returns the version of the JSKOS specification that's used for validation.
 
 ```js
-jskos.version // 0.4.4
+jskos.version // 0.4.6
 ```
 
 ## Test

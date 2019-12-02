@@ -7,7 +7,7 @@
  * Version of the [JSKOS specification](http://gbv.github.io/jskos/)
  * that this module is based on.
  */
-const version = "0.4.4"
+const version = "0.4.6"
 
 let validate = require("./lib/validate")
 validate.version = version
