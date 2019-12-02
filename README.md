@@ -43,6 +43,8 @@ validate.mapping(mapping) // returns true or false
 // ...
 ```
 
+See npm module [jskos-cli](https://www.npmjs.com/package/jskos-cli) for a command line interface to JSKOS validation.
+
 ### version
 Returns the version of the JSKOS specification that's used for validation.
 
