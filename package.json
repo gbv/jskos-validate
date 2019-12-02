@@ -12,6 +12,11 @@
   },
   "license": "MIT",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "test"
+  ],
   "scripts": {
     "test": "mocha",
     "lint": "eslint ./*.js ./**/*.js ./bin/*",
