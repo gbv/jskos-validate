@@ -1,0 +1,6 @@
+{
+  "@context": "https://gbv.github.io/jskos/context.json",
+  "uri": "http://example.org/",
+  "_custom": true,
+  "CUSTOM123": true
+}
