@@ -11,7 +11,7 @@
     "url": "https://github.com/gbv/jskos-validate/issues"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/validate.js",
   "files": [
     "index.js",
     "lib",
@@ -19,16 +19,12 @@
   ],
   "scripts": {
     "test": "mocha",
-    "lint": "eslint ./*.js ./**/*.js",
-    "fix": "eslint --fix ./*.js ./**/*.js",
+    "lint": "eslint ./**/*.js",
+    "fix": "eslint --fix ./**/*.js",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "**/*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.js": [
       "eslint --fix",
       "git add"
     ]
