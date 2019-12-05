@@ -1,3 +1,7 @@
+## 0.3.2
+
+* Add missing schema files (bugfix)
+
 ## 0.3.1
 
 * Add human readable error messages
