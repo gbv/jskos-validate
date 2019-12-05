@@ -75,16 +75,10 @@ describe("JSKOS JSON Schemas", () => {
           }
           for (let object of objects) {
             let result = validate[type](object)
-            let errorText =
-              !result
-                ? `${type} did not validate:
-                ${validate[type].errors.reduce((t, c) => `${t}- ${c.dataPath} ${c.message}\n`, "")}`
-                : (expected ? "" : `${type} passed even though it shouldn't.`)
-            assert.equal(result, expected, errorText)
+            assert.equal(result, expected, validate[type].errorMessages[0])
           }
         })
       }
     })
   }
-
 })

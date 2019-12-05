@@ -64,6 +64,18 @@ const validate = require("jskos-validate")
 validate.concept(data, { unknownFields: true })
 ```
 
+### errors and errorMessages
+
+Property `errors` and `errorMessages` of the validation function contain errors in detailled format and as array of error message strings, respectively. 
+
+```js
+const validate = require("jskos-validate")
+
+if (!validate.concept(data)) {
+  validate.concept.errorMessages.forEach(console.error)
+}
+```
+
 ### version
 
 Returns the version of JSKOS specification that is used for validation.
