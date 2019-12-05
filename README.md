@@ -13,23 +13,32 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
 
 - [Install](#install)
 - [Usage](#usage)
-  - [version](#version)
-- [Test](#test)
 - [Maintainers](#maintainers)
 - [Publish](#publish)
-- [Contribute](#contribute)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Install
 
+You will unlikely need to directly install jskos-validate. Better use a client such as [jskos-cli](https://www.npmjs.com/package/jskos-cli) instead!
+
+Install as dependency to your node project:
+
+```
+npm install --save jskos-validate
+```
+
+Or clone the current version for development:
+
 ```bash
 git clone --recursive https://github.com/gbv/jskos-validate.git
 cd jskos-validate
-npm i jskos-validate
+npm install
 ```
 
 ## Usage
-This module provides validation methods for each [JSKOS object type](http://gbv.github.io/jskos/jskos.html#object-types) based on JSON Schemas.
+
+This module provides validation methods for each [JSKOS object type](http://gbv.github.io/jskos/jskos.html#object-types) based on JSON Schemas and additional constraints.
 
 ```js
 const validate = require("jskos-validate")
@@ -45,17 +54,22 @@ validate.mapping(mapping) // returns true or false
 
 See npm module [jskos-cli](https://www.npmjs.com/package/jskos-cli) for a command line interface to JSKOS validation.
 
-### version
-Returns the version of the JSKOS specification that's used for validation.
+### unknownFields
+
+Setting the option `unknownFields` to a truthy value will not complain about additional fields. This is useful for instance to validate JSKOS data with newly introduced fields with an old schema.
 
 ```js
-jskos.version // 0.4.6
+const validate = require("jskos-validate")
+
+validate.concept(data, { unknownFields: true })
 ```
 
-## Test
+### version
 
-```bash
-npm test
+Returns the version of JSKOS specification that is used for validation.
+
+```js
+validate.version // 0.4.6
 ```
 
 ## Maintainers
@@ -63,22 +77,16 @@ npm test
 - [@stefandesu](https://github.com/stefandesu)
 - [@nichtich](https://github.com/nichtich)
 
-## Publish
+## Contributing
 
-To publish a new version on npm after committing your changes, follow these steps:
+Please use [GitHub issues](https://github.com/gbv/jskos-validate/issues) for bug reports, feature requests or questions.
+
+*Maintainers only:* To publish a new version on npm via Travis:
 
 ```bash
 npm version patch # or minor, or major
 git push --tags origin master
 ```
-
-Travis will automatically deploy the new version based on the tag to npm.
-
-## Contribute
-
-PRs accepted.
-
-Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
 
