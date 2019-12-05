@@ -1,6 +1,6 @@
 {
   "name": "jskos-validate",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Validation for JSKOS data.",
   "homepage": "https://github.com/gbv/jskos-validate",
   "repository": {
