@@ -47,7 +47,6 @@
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
-    "ajv": "^6.5.2",
-    "lodash": "^4.17.11"
+    "ajv": "^6.5.2"
   }
 }
