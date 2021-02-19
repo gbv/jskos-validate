@@ -1,6 +1,6 @@
 # JSKOS Validation
 
-[![Build Status](https://travis-ci.com/gbv/jskos-validate.svg?branch=master)](https://travis-ci.com/gbv/jskos-validate)
+[![Test](https://github.com/gbv/jskos-validate/actions/workflows/test.yml/badge.svg)](https://github.com/gbv/jskos-validate/actions/workflows/test.yml)
 [![GitHub package version](https://img.shields.io/github/package-json/v/gbv/jskos-validate.svg?label=version)](https://github.com/gbv/jskos-validate)
 [![NPM package name](https://img.shields.io/badge/npm-jskos--validate-blue.svg)](https://www.npmjs.com/package/jskos-validate)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
