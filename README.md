@@ -11,10 +11,13 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Install](#install)
 - [Usage](#usage)
+  - [unknownFields](#unknownfields)
+  - [errors and errorMessages](#errors-and-errormessages)
+  - [version](#version)
 - [Maintainers](#maintainers)
-- [Publish](#publish)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -66,7 +69,7 @@ validate.concept(data, { unknownFields: true })
 
 ### errors and errorMessages
 
-Property `errors` and `errorMessages` of the validation function contain errors in detailled format and as array of error message strings, respectively. 
+Property `errors` and `errorMessages` of the validation function contain errors in detailled format and as array of error message strings, respectively.
 
 ```js
 const validate = require("jskos-validate")
@@ -93,11 +96,10 @@ validate.version // 0.4.6
 
 Please use [GitHub issues](https://github.com/gbv/jskos-validate/issues) for bug reports, feature requests or questions.
 
-*Maintainers only:* To publish a new version on npm via Travis:
+*Maintainers only:* To publish a new version on npm via GitHub Actions:
 
 ```bash
-npm version patch # or minor, or major
-git push --tags origin master
+npm run release:patch # or minor, or major
 ```
 
 ## License
