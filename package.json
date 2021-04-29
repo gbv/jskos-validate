@@ -30,8 +30,7 @@
   },
   "lint-staged": {
     "**/*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "pre-commit": [
@@ -40,13 +39,14 @@
   ],
   "author": "Stefan Peters",
   "devDependencies": {
-    "eslint": "^6.0.0",
-    "glob": "^7.1.2",
-    "lint-staged": "^9.0.0",
-    "mocha": "^6.0.0",
+    "eslint": "^7.25.0",
+    "glob": "^7.1.6",
+    "lint-staged": "^10.5.4",
+    "mocha": "^8.3.2",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
-    "ajv": "^6.5.2"
+    "ajv": "^8.2.0",
+    "ajv-formats": "^2.0.2"
   }
 }
