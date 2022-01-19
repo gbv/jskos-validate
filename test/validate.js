@@ -76,6 +76,13 @@ describe("JSKOS JSON Schemas", () => {
           for (let object of objects) {
             let result = validate[type](object)
             assert.equal(result, expected, validate[type].errorMessages[0])
+
+            if (validate[type].errorMessages) {
+              validate(object)
+              assert.ok(validate.errorMessages)
+            } else {
+              assert.equal(result, validate(object))
+            }
           }
         })
       }

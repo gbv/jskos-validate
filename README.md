@@ -48,9 +48,11 @@ const validate = require("jskos-validate")
 
 let concept = { ... }
 validate.concept(concept) // returns true or false
+validate(concept)         // same if concept contains type field
 
 let mapping = { ... }
 validate.mapping(mapping) // returns true or false
+validate(mapping)         // same if mapping contains type field
 
 // ...
 ```
@@ -64,7 +66,7 @@ Setting the option `unknownFields` to a truthy value will not complain about add
 ```js
 const validate = require("jskos-validate")
 
-validate.concept(data, { unknownFields: true })
+validate(data, { unknownFields: true })
 ```
 
 ### errors and errorMessages
@@ -76,6 +78,10 @@ const validate = require("jskos-validate")
 
 if (!validate.concept(data)) {
   validate.concept.errorMessages.forEach(console.error)
+}
+
+if (!validate(data)) {
+  validate.errorMessages.forEach(console.error)
 }
 ```
 

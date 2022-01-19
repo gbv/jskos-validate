@@ -1,3 +1,7 @@
+## 0.4.4
+
+* Add function to validate without explicit type
+ 
 ## 0.4.3
 
 * Fix JSKOS schema update to support full URLs
