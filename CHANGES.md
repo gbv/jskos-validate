@@ -1,3 +1,7 @@
+## 0.4.3
+
+* Fix JSKOS schema update to support full URLs
+
 ## 0.4.2
 
 * Update JSKOS schema to support umlauts in URLs
