@@ -7,7 +7,7 @@ const validate = require("../lib/validate")
 let types = ["resource", "item", "concept", "scheme", "mapping", "concordance", "registry", "distribution", "occurrence", "bundle", "annotation"]
 let examples = {}
 
-// Import local example objects
+// Import local examples
 for (let type of types) {
   examples[type] = []
   for (let expected of [true, false]) {
@@ -26,7 +26,8 @@ for (let type of types) {
     }
   }
 }
-// Import remote example objects
+
+// Import examples included in the JSKOS specification
 let files = glob.sync("jskos/examples/*.json")
 for (let file of files) {
   let type = null
@@ -74,14 +75,17 @@ describe("JSKOS JSON Schemas", () => {
             objects = object
           }
           for (let object of objects) {
-            let result = validate[type](object)
-            assert.equal(result, expected, validate[type].errorMessages[0])
+            const validator = validate[type] 
+            const result = validator(object)
 
-            if (validate[type].errorMessages) {
-              validate(object)
-              assert.ok(validate.errorMessages)
+            assert.equal(result, expected)
+
+            if (expected) {
+              assert.equal(validator.errors.length, 0)
+              assert.equal(validator.errorMessages.length, 0)
             } else {
-              assert.equal(result, validate(object))
+              assert.ok(validator.errors.length)
+              assert.ok(validator.errorMessages.length)
             }
           }
         })

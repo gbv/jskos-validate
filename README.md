@@ -15,6 +15,7 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
 - [Install](#install)
 - [Usage](#usage)
   - [unknownFields](#unknownfields)
+  - [schemes](#schemes)
   - [errors and errorMessages](#errors-and-errormessages)
   - [version](#version)
 - [Maintainers](#maintainers)
@@ -68,6 +69,10 @@ const validate = require("jskos-validate")
 
 validate(data, { unknownFields: true })
 ```
+
+### schemes
+
+Option `schemes` can be set to an array of JSKOS Concept Schemes to be looked up by their URI in field `inScheme` of a concept. Scheme fields `namespace`, `uriPattern` and `notationPattern` are used for validation.
 
 ### errors and errorMessages
 

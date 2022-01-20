@@ -1,3 +1,7 @@
+## 0.4.5
+
+* Extend validation by scheme information (#3)
+
 ## 0.4.4
 
 * Add function to validate without explicit type
