@@ -1,3 +1,7 @@
+## 0.5.1
+
+* Add option `rememberSchemes`
+
 ## 0.5.0
 
 * Extend validation by scheme information (#3)
@@ -27,4 +31,3 @@
 * Include object hierarchy in validation (e.g. Concept is also an Item)
 * Make strict validation the default (no unknown fields)
 * Add option `unknownFields` to allow unknown fields
-

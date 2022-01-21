@@ -7,11 +7,45 @@ describe("version", () => {
   })
 })
 
-describe("options", () => {
+describe("unknownFields", () => {
   it("allows custom fields by default", () => {
-    assert.ok(validate.concept({FOO:1}))
+    assert.ok(validate({FOO:1}))
   })
   it("allows unknown fields if enabled", () => {      
-    assert.ok(validate.concept({x:1}, {unknownFields: true}))
+    assert.ok(validate({x:1}, {unknownFields: true}))
   }) 
 }) 
+
+describe("schemes", () => {
+  const schemes = [{ uri: "a:scheme", notationPattern: "[a-z]" }]
+  const inScheme = [{ uri: "a:scheme" }]
+  const c1 = { uri: "c:1", notation: ["a"], inScheme }
+  const c2 = { uri: "c:2", notation: ["1"], inScheme }
+  const c3 = { ...c2, inScheme: [{ uri: "a:scheme", notationPattern: "[0-9]" }]}
+
+  it("used option schemes for lookup", () => {
+    assert.ok(validate.concept(c1, { schemes }))
+    assert.ok(!validate.concept(c2, { schemes }))
+  })
+
+  it("inScheme overrides schemes", () => {
+    assert.ok(validate.concept(c3, { schemes }))
+  })
+
+//    let object = JSON.parse(fs.readFileSync(file))
+})
+
+describe("rememberSchemes", () => {
+  const rememberSchemes = []
+  const aScheme = { uri: "a:scheme", notationPattern: "[a-z]" }
+  const aScheme2 = { uri: "a:scheme", notationPattern: "[0-9]" }
+  const bScheme = { uri: "b:scheme", notationPattern: "[0-9]" }
+
+  validate.scheme(aScheme, { rememberSchemes })
+  assert.deepEqual(rememberSchemes, [aScheme])
+
+  validate.scheme(aScheme2, { rememberSchemes })
+  validate.scheme(bScheme, { rememberSchemes })
+
+  assert.deepEqual(rememberSchemes, [aScheme2, bScheme])
+})

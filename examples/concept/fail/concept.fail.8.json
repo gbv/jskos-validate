@@ -1,0 +1,4 @@
+{
+  "notation": ["X"],
+  "inScheme": [{ "notationPattern": "[a-z]" }]
+}

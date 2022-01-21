@@ -1,0 +1,4 @@
+{
+  "uri": "x:a:1",
+  "inScheme": [{ "namespace": "x:b" }]
+}

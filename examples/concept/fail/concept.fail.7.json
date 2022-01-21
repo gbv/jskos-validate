@@ -1,0 +1,4 @@
+{
+  "uri": "x:a",
+  "inScheme": [{ "uriPattern": "^[a-z]:[0-9]+" }]
+}
