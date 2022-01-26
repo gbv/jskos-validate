@@ -1,3 +1,7 @@
+## 0.5.2
+
+* Add option `knownSchemes`
+
 ## 0.5.1
 
 * Add option `rememberSchemes`

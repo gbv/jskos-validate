@@ -49,3 +49,16 @@ describe("rememberSchemes", () => {
 
   assert.deepEqual(rememberSchemes, [aScheme2, bScheme])
 })
+
+describe("knownSchemes", () => {
+  const knownSchemes = [{ uri: "a:scheme", notationPattern: "[a-z]" }]
+  const concept = { uri: "c:1", notation: ["a"], inScheme: [{ uri: "a:scheme" }] }
+  
+  assert.ok(validate.concept(concept, { knownSchemes }))
+  concept.inScheme[0].notationPattern = "[0-9]" // must be ignored
+  assert.ok(validate.concept(concept, { knownSchemes }))
+  concept.inScheme = [{uri: "another:scheme"}]
+  assert.ok(!validate.concept(concept, { knownSchemes }))
+  delete concept.inScheme
+  assert.ok(!validate.concept(concept, { knownSchemes }))
+})
