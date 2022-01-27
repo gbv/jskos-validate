@@ -16,7 +16,8 @@
     "index.js",
     "lib",
     "jskos/schemas",
-    "test"
+    "test",
+    "examples"
   ],
   "scripts": {
     "test": "mocha",
