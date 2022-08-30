@@ -113,7 +113,7 @@ if (!validate(data)) {
 Returns the version of JSKOS specification that is used for validation.
 
 ```js
-validate.version // 0.4.6
+validate.version // 0.5.0
 ```
 
 ## Maintainers
