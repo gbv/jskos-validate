@@ -66,6 +66,7 @@ describe("JSKOS JSON Schemas", () => {
   // Validate difference object types
   for (let type of types) {
     let typePlural = type + "s"
+    const validator = validate[type]
     describe(typePlural, () => {
       for (let { object, expected, file } of examples[type]) {
         it(`should validate ${typePlural} (${file})`, () => {
@@ -75,7 +76,6 @@ describe("JSKOS JSON Schemas", () => {
             objects = object
           }
           for (let object of objects) {
-            const validator = validate[type] 
             const result = validator(object)
 
             assert.equal(result, expected)
@@ -88,6 +88,21 @@ describe("JSKOS JSON Schemas", () => {
               assert.ok(validator.errorMessages.length)
             }
           }
+        })
+      }
+      // Additional test for "unknownFields = true" (=lax schema) for annotations
+      if (type === "annotation") {
+        it("should validate annotation with lax schema (unknownFields = true) (1)", () => {
+          const result = validator({ target: { id: "abc:def" } }, { unknownFields: true })
+          assert.equal(result, true)
+          assert.equal(validator.errors.length, 0)
+          assert.equal(validator.errorMessages.length, 0)
+        })
+        it("should validate annotation with lax schema (unknownFields = true) (2)", () => {
+          const result = validator({ body: [] }, { unknownFields: true })
+          assert.equal(result, true)
+          assert.equal(validator.errors.length, 0)
+          assert.equal(validator.errorMessages.length, 0)
         })
       }
     })
