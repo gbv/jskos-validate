@@ -1,0 +1,10 @@
+{
+  "target": {
+    "id": "https://coli-conc.gbv.de/api/mappings/f0cc5f65-5712-4820-9638-e662c0c4314e",
+    "state": {
+      "id": "urn:jskos:mapping:content:c272e8cef794cd2687025cf83f04d8615b283caa"
+    }
+  },
+  "motivation": "assessing",
+  "bodyValue": "+1"
+}
