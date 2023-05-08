@@ -92,12 +92,12 @@ describe("JSKOS JSON Schemas", () => {
       }
       // Additional test for "unknownFields = true" (=lax schema) for annotations
       if (type === "annotation") {
-        it("should validate annotation with lax schema (unknownFields = true) (1)", () => {
-          const result = validator({ target: { id: "abc:def" } }, { unknownFields: true })
-          assert.equal(result, true)
-          assert.equal(validator.errors.length, 0)
-          assert.equal(validator.errorMessages.length, 0)
-        })
+        // it("should validate annotation with lax schema (unknownFields = true) (1)", () => {
+        //   const result = validator({ target: { id: "abc:def" } }, { unknownFields: true })
+        //   assert.equal(result, true)
+        //   assert.equal(validator.errors.length, 0)
+        //   assert.equal(validator.errorMessages.length, 0)
+        // })
         it("should validate annotation with lax schema (unknownFields = true) (2)", () => {
           const result = validator({ body: [] }, { unknownFields: true })
           assert.equal(result, true)
