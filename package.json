@@ -50,6 +50,6 @@
     "ajv": "^8.11.2",
     "ajv-formats": "^2.1.1",
     "ajv-formats-draft2019": "^1.6.1",
-    "jskos-tools": "^1.0.27"
+    "jskos-tools": "^1.0.31"
   }
 }
