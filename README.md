@@ -11,7 +11,6 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Install](#install)
 - [Usage](#usage)
   - [unknownFields](#unknownfields)
@@ -28,7 +27,7 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
 
 You will unlikely need to directly install jskos-validate. Better use a client such as [jskos-cli](https://www.npmjs.com/package/jskos-cli) instead!
 
-Install as dependency to your node project (requires at least NodeJS 8):
+Install as dependency to your node project (requires at least NodeJS 18):
 
 ```
 npm install --save jskos-validate
