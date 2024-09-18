@@ -1,3 +1,4 @@
 {
+  "@context": "http://example.org/context.json",
   "url": "http://exämple.org/"
 }
