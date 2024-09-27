@@ -5,11 +5,10 @@ import fs from "fs"
 const readFile = fs.promises.readFile
 import ifdef from "esbuild-plugin-ifdef"
 
-import compile from "./compile.js"
+// Precompile schemas
+import "./compile.js"
 
 (async () => {
-  // Precompile schemas
-  await compile()
 
   const pkg = JSON.parse(
     await readFile("./package.json"),
