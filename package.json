@@ -23,11 +23,7 @@
   "jsdelivr": "./dist/jskos-validate.js",
   "unpkg": "./dist/jskos-validate.js",
   "files": [
-    "index.js",
-    "lib",
-    "jskos/schemas",
-    "test",
-    "examples"
+    "dist"
   ],
   "scripts": {
     "build": "node bin/build.js",
