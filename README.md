@@ -1,6 +1,6 @@
 # JSKOS Validation
 
-[![Test](https://github.com/gbv/jskos-validate/actions/workflows/test.yml/badge.svg)](https://github.com/gbv/jskos-validate/actions/workflows/test.yml)
+[![Test and build](https://github.com/gbv/jskos-validate/actions/workflows/test-and-build.yml/badge.svg)](https://github.com/gbv/jskos-validate/actions/workflows/test-and-build.yml)
 [![GitHub package version](https://img.shields.io/github/package-json/v/gbv/jskos-validate.svg?label=version)](https://github.com/gbv/jskos-validate)
 [![NPM package name](https://img.shields.io/badge/npm-jskos--validate-blue.svg)](https://www.npmjs.com/package/jskos-validate)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
@@ -20,34 +20,49 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
   - [errors and errorMessages](#errors-and-errormessages)
   - [version](#version)
 - [Maintainers](#maintainers)
-- [Contributing](#contributing)
+- [Publish](#publish)
+- [Contribute](#contribute)
 - [License](#license)
 
 ## Install
 
-You will unlikely need to directly install jskos-validate. Better use a client such as [jskos-cli](https://www.npmjs.com/package/jskos-cli) instead!
+For CLI usage, better use a client such as [jskos-cli](https://www.npmjs.com/package/jskos-cli).
 
-Install as dependency to your node project (requires at least NodeJS 18):
+Install as dependency to your Node project (requires Node.js 18 or later):
 
 ```
-npm install --save jskos-validate
+npm i jskos-validate
 ```
+
+We are also providing a browser bundle: https://cdn.jsdelivr.net/npm/jskos-validate@1/dist/jskos-validate.js It will be available under the global name `JSKOS_VALIDATE` which is an object with the member `validate` (see below).
 
 Or clone the current version for development:
 
 ```bash
 git clone --recursive https://github.com/gbv/jskos-validate.git
 cd jskos-validate
-npm install
+npm ci
+npm run build
 ```
 
+**Note:** As of v1, the package includes *precompiled JSON Schemas*. This means that the schemas won't have to be compiled on first import, but the package size is larger.
+
 ## Usage
+
+As of v1, import the package as follows:
+
+```js
+// ESM
+import { validate } from "jskos-validate"
+// CJS
+const { validate } = require("jskos-validate")
+// Browser
+const { validate } = JSKOS_VALIDATE
+```
 
 This module provides validation methods for each [JSKOS object type](http://gbv.github.io/jskos/jskos.html#object-types) based on JSON Schemas and additional constraints.
 
 ```js
-const validate = require("jskos-validate")
-
 let concept = { ... }
 validate.concept(concept) // returns true or false
 validate(concept)         // same if concept contains type field
@@ -66,8 +81,6 @@ See npm module [jskos-cli](https://www.npmjs.com/package/jskos-cli) for a comman
 Setting the option `unknownFields` to a truthy value will not complain about additional fields. This is useful for instance to validate JSKOS data with newly introduced fields with an old schema.
 
 ```js
-const validate = require("jskos-validate")
-
 validate(data, { unknownFields: true })
 ```
 
@@ -96,8 +109,6 @@ This option is ignored if `knownSchemes` is set because in this case the set of 
 Property `errors` and `errorMessages` of the validation function contain errors in detailled format and as array of error message strings, respectively.
 
 ```js
-const validate = require("jskos-validate")
-
 if (!validate.concept(data)) {
   validate.concept.errorMessages.forEach(console.error)
 }
@@ -112,7 +123,7 @@ if (!validate(data)) {
 Returns the version of JSKOS specification that is used for validation.
 
 ```js
-validate.version // 0.5.0
+validate.version // 0.5.4
 ```
 
 ## Maintainers
@@ -120,15 +131,36 @@ validate.version // 0.5.0
 - [@stefandesu](https://github.com/stefandesu)
 - [@nichtich](https://github.com/nichtich)
 
-## Contributing
+## Publish
 
-Please use [GitHub issues](https://github.com/gbv/jskos-validate/issues) for bug reports, feature requests or questions.
+Please work on the `dev` branch during development (or better yet, develop in a feature branch and merge into `dev` when ready).
 
-*Maintainers only:* To publish a new version on npm via GitHub Actions:
+When a new release is ready (i.e. the features are finished, merged into `dev`, and all tests succeed), run the included release script (replace "patch" with "minor" or "major" if necessary):
 
 ```bash
 npm run release:patch # or minor, or major
 ```
+
+This will:
+- Check that we are on `dev`
+- Run tests and build to make sure everything works
+- Make sure `dev` is up-to-date
+- Run `npm version patch` (or "minor"/"major")
+- Push changes to `dev`
+- Switch to `main`
+- Merge changes from `dev`
+- Push `main` with tags
+- Switch back to `dev`
+
+After running this, GitHub Actions will **automatically publish the new version to npm**. It will also create a new GitHub Release draft. Please **edit and publish the release draft manually**.
+
+## Contribute
+
+Please use [GitHub issues](https://github.com/gbv/jskos-validate/issues) for bug reports, feature requests or questions.
+
+PRs accepted **against the `dev` branch**.
+
+Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
 
