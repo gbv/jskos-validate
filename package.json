@@ -30,6 +30,7 @@
     "examples"
   ],
   "scripts": {
+    "build": "node bin/build.js",
     "compile": "node bin/compile.js",
     "test": "npm run compile && mocha",
     "lint": "eslint",
