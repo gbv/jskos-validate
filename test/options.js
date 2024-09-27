@@ -1,5 +1,5 @@
-const assert = require("assert")
-const validate = require("../lib/validate")
+import assert from "node:assert"
+import { validate } from "../lib/validate.js"
 
 describe("version", () => {
   it("exports a JSKOS spec version", () => {

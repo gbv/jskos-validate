@@ -1,8 +1,7 @@
-const glob = require("glob")
-const fs = require("fs")
-
-const assert = require("assert")
-const validate = require("../lib/validate")
+import * as glob from "glob"
+import fs from "node:fs"
+import assert from "node:assert"
+import { validate } from "../lib/validate.js"
 
 let types = ["resource", "item", "concept", "scheme", "mapping", "concordance", "registry", "distribution", "occurrence", "bundle", "annotation"]
 let examples = {}

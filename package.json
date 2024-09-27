@@ -11,7 +11,17 @@
     "url": "https://github.com/gbv/jskos-validate/issues"
   },
   "license": "MIT",
-  "main": "lib/validate.js",
+  "type": "module",
+  "main": "./dist/cjs/validate.cjs",
+  "module": "./dist/esm/validate.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/validate.cjs",
+      "import": "./dist/esm/validate.js"
+    }
+  },
+  "jsdelivr": "./dist/jskos-validate.js",
+  "unpkg": "./dist/jskos-validate.js",
   "files": [
     "index.js",
     "lib",
@@ -40,16 +50,19 @@
   ],
   "author": "Stefan Peters",
   "devDependencies": {
+    "esbuild": "^0.24.0",
+    "esbuild-plugin-ifdef": "^1.0.1",
     "eslint": "^8.57.0",
-    "glob": "^10.3.10",
-    "lint-staged": "^15.2.2",
-    "mocha": "^10.3.0",
+    "glob": "^10.4.5",
+    "license-checker": "^25.0.1",
+    "lint-staged": "^15.2.10",
+    "mocha": "^10.7.3",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
-    "ajv": "^8.12.0",
+    "ajv": "^8.17.1",
     "ajv-formats": "^2.1.1",
     "ajv-formats-draft2019": "^1.6.1",
-    "jskos-tools": "^1.0.35"
+    "jskos-tools": "^1.0.42"
   }
 }
