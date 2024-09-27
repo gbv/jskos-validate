@@ -15,7 +15,7 @@ export default async function compile() {
   const types = [
     "resource", "item", "bundle",
     "concept", "scheme", "mapping", "concordance", "registry", "distribution",
-    "occurrence", "annotation"
+    "occurrence", "annotation",
   ]
   const isa = {
     item: ["resource"],
@@ -25,7 +25,7 @@ export default async function compile() {
     concordance: ["item"],
     registry: ["item"],
     distribution: ["item"],
-    occurrence: ["resource", "bundle"]
+    occurrence: ["resource", "bundle"],
   }
   const laxSchemas = {}
   const strictSchemas = {}
@@ -80,10 +80,10 @@ export default async function compile() {
     // Rewrite "require" statements
     // See https://github.com/ajv-validator/ajv/issues/2209
     let match
-    while (match = code.match(/const (\S+) = require\(\"(\S+)\"\)(\S+);/)) {
+    while (match = code.match(/const (\S+) = require\("(\S+)"\)(\S+);/)) {
       if (match[3].endsWith(".iri") || match[3].endsWith("[\"iri-reference\"]")) {
         // Somehow, these format references are compiled in the wrong way, and we have to fix them manually
-        let format = `["iri-reference"]`
+        let format = "[\"iri-reference\"]"
         if (match[3].endsWith(".iri")) {
           format = ".iri"
         }

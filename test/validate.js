@@ -17,7 +17,7 @@ for (let type of types) {
         examples[type].push({
           object,
           expected,
-          file
+          file,
         })
       } catch(error) {
         console.log("Unable to parse file", file)
@@ -44,7 +44,7 @@ for (let file of files) {
     examples[type].push({
       object,
       expected: true,
-      file
+      file,
     })
   } catch(error) {
     console.log("Unable to parse file", file)
