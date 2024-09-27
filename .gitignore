@@ -13,5 +13,5 @@ npm-debug.log*
 # build artifacts
 jsdoc/build
 dist/
-lib/lax.js
-lib/strict.js
+src/lax.js
+src/strict.js

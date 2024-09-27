@@ -1,5 +1,5 @@
 import assert from "node:assert"
-import { validate } from "../lib/validate.js"
+import { validate } from "../src/validate.js"
 
 describe("version", () => {
   it("exports a JSKOS spec version", () => {

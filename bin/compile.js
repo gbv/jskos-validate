@@ -87,5 +87,5 @@ for (const mode of Object.keys(ajv)) {
       code = code.replace(match[0], `import ${match[1]}_IMPORT from "${match[2]}.js"; const ${match[1]} = ${match[1]}_IMPORT${match[3]};`)
     }
   } 
-  await fs.writeFile(path.join(__dirname, `../lib/${mode}.js`), code)
+  await fs.writeFile(path.join(__dirname, `../src/${mode}.js`), code)
 }

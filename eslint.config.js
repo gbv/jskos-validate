@@ -9,8 +9,8 @@ export default [
   },
   {
     ignores: [
-      "lib/lax.js",
-      "lib/strict.js",
+      "src/lax.js",
+      "src/strict.js",
       "jskos",
     ],
   },

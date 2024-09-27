@@ -1,7 +1,7 @@
 import * as glob from "glob"
 import fs from "node:fs"
 import assert from "node:assert"
-import { validate } from "../lib/validate.js"
+import { validate } from "../src/validate.js"
 
 let types = ["resource", "item", "concept", "scheme", "mapping", "concordance", "registry", "distribution", "occurrence", "bundle", "annotation"]
 let examples = {}

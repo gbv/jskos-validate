@@ -14,7 +14,7 @@ import "./compile.js"
     await readFile("./package.json"),
   )
 
-  const sourceFolder = process.env.BUILD_SOURCE_FOLDER || "./lib"
+  const sourceFolder = process.env.BUILD_SOURCE_FOLDER || "./src"
   const targetFolder = process.env.BUILD_TARGET_FOLDER || "./dist"
   let define = {}
 
