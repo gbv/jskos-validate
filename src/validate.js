@@ -22,7 +22,7 @@
   */
 
 // Version of JSKOS specification that this module is based on
-const jskosVersion = "0.5.3"
+const jskosVersion = "0.5.4"
 
 import typeError from "./types.js"
 import * as jskos from "jskos-tools"
