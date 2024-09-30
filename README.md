@@ -21,7 +21,7 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
   - [version](#version)
 - [Maintainers](#maintainers)
 - [Publish](#publish)
-  - [Updating JSKOS Submodule](#updating-jskos-submodule)
+  - [Updating JSKOS Spec/Schemas](#updating-jskos-specschemas)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -40,7 +40,7 @@ We are also providing a browser bundle: https://cdn.jsdelivr.net/npm/jskos-valid
 Or clone the current version for development:
 
 ```bash
-git clone --recursive https://github.com/gbv/jskos-validate.git
+git clone https://github.com/gbv/jskos-validate.git
 cd jskos-validate
 npm ci
 npm run build
@@ -155,9 +155,9 @@ This will:
 
 After running this, GitHub Actions will **automatically publish the new version to npm**. It will also create a new GitHub Release draft. Please **edit and publish the release draft manually**.
 
-### Updating JSKOS Submodule
+### Updating JSKOS Spec/Schemas
 
-Run this command to update the JSKOS submodule in Git to the latest commit: `git submodule update --remote --merge`
+To update the dependency on the JSKOS JSON Schemas, update the commit hash in the corresponding entry in `package.json` to the latest commit hash in the [JSKOS repository](https://github.com/gbv/jskos), then run `npm i`.
 
 ## Contribute
 
