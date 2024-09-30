@@ -47,22 +47,28 @@ for (const type of types) {
   const json = await fs.readFile(schemaFile, "utf8")
   
   // Lax schema without any additions
-  laxSchemas[type] = JSON.parse(json)
+  const laxSchema = JSON.parse(json)
+  for (const parentType of (isa[type] || [])) {
+    laxSchema.definitions = laxSchema.definitions || {}
+    Object.assign(laxSchema.definitions, laxSchemas[parentType].definitions)
+    Object.assign(laxSchema.properties, laxSchemas[parentType].properties)
+  }
+  laxSchemas[type] = laxSchema
   ajv.lax.addSchema(laxSchemas[type])
   
   // Strict schema needs some additions
-  const schema = JSON.parse(json)
+  const strictSchema = JSON.parse(json)
   for (const parentType of (isa[type] || [])) {
-    schema.definitions = schema.definitions || {}
-    Object.assign(schema.definitions, strictSchemas[parentType].definitions)
-    Object.assign(schema.properties, strictSchemas[parentType].properties)
+    strictSchema.definitions = strictSchema.definitions || {}
+    Object.assign(strictSchema.definitions, strictSchemas[parentType].definitions)
+    Object.assign(strictSchema.properties, strictSchemas[parentType].properties)
   }
-  delete schema.allOf
-  delete schema.anyOf
-  schema.patternProperties = { "^_": {}, "^[A-Z0-9]+$": {} }
-  schema.additionalProperties = false
-  strictSchemas[type] = schema
-  ajv.strict.addSchema(schema)
+  delete strictSchema.allOf
+  delete strictSchema.anyOf
+  strictSchema.patternProperties = { "^_": {}, "^[A-Z0-9]+$": {} }
+  strictSchema.additionalProperties = false
+  strictSchemas[type] = strictSchema
+  ajv.strict.addSchema(strictSchema)
 }
   
 const idMapping = {}
