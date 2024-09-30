@@ -21,6 +21,7 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
   - [version](#version)
 - [Maintainers](#maintainers)
 - [Publish](#publish)
+  - [Updating JSKOS Submodule](#updating-jskos-submodule)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -153,6 +154,10 @@ This will:
 - Switch back to `dev`
 
 After running this, GitHub Actions will **automatically publish the new version to npm**. It will also create a new GitHub Release draft. Please **edit and publish the release draft manually**.
+
+### Updating JSKOS Submodule
+
+Run this command to update the JSKOS submodule in Git to the latest commit: `git submodule update --remote --merge`
 
 ## Contribute
 
