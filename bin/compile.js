@@ -95,3 +95,7 @@ for (const mode of Object.keys(ajv)) {
   } 
   await fs.writeFile(path.join(__dirname, `../src/${mode}.js`), code)
 }
+
+// Read JSKOS version from dependency
+const jskosPackage = JSON.parse(await fs.readFile(path.join(__dirname, "../jskos/package.json"), "utf8"))
+await fs.writeFile(path.join(__dirname, "../src/jskos-version.js"), `export default "${jskosPackage.version}"`)

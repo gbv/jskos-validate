@@ -15,3 +15,4 @@ jsdoc/build
 dist/
 src/lax.js
 src/strict.js
+src/jskos-version.js
