@@ -1,3 +1,16 @@
+## 1.0.1
+
+* Fix broken JSKOS build, introduce pre-release JSKOS Schema > 0.6.0
+
+## 1.0.0
+
+* Update dependencies and build workflows (no functional changes)
+* Update JSKOS version to 0.5.4
+
+## 0.5.4
+
+* Update JSKOS version to 0.5.3
+
 ## 0.5.2
 
 * Add option `knownSchemes`
