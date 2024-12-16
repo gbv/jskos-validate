@@ -57,7 +57,7 @@
     "license-checker": "^25.0.1",
     "lint-staged": "^15.2.10",
     "mocha": "^10.7.3",
-    "pre-commit": "^1.2.2",
+    "pre-commit": "^1.0.10",
     "yesno": "^0.4.0"
   },
   "dependencies": {
