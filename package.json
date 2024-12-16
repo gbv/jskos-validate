@@ -64,7 +64,7 @@
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "ajv-formats-draft2019": "^1.6.1",
-    "jskos": "https://github.com/gbv/jskos/tarball/master#bae2be0",
+    "jskos": "https://github.com/gbv/jskos/tarball/master#6987897",
     "jskos-tools": "^1.0.42"
   }
 }
