@@ -1,4 +1,4 @@
-import Ajv from "ajv"
+import Ajv from "ajv/dist/2019.js"
 import standaloneCode from "ajv/dist/standalone/index.js"
 import fs from "node:fs/promises"
 import path from "node:path"
