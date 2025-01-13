@@ -31,7 +31,7 @@ let files = glob.sync("jskos/examples/*.json")
 for (let file of files) {
   let type = null
   for (let possibleType of types) {
-    if (file.indexOf(possibleType) != -1) {
+    if (file.match(possibleType + "[./]")) {
       type = possibleType
       break
     }
