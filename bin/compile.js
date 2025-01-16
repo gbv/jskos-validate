@@ -42,8 +42,10 @@ addFormats(ajv.strict)
 addFormatsDraft2019(ajv.lax)
 addFormatsDraft2019(ajv.strict)
   
+const jskosPath = path.join(__dirname, "../node_modules/jskos")
+
 for (const type of types) {
-  const schemaFile = path.join(__dirname, `../jskos/schemas/${type}.schema.json`)
+  const schemaFile = path.join(jskosPath, `schemas/${type}.schema.json`)
   const json = await fs.readFile(schemaFile, "utf8")
   
   // Lax schema without any additions
@@ -97,5 +99,5 @@ for (const mode of Object.keys(ajv)) {
 }
 
 // Read JSKOS version from dependency
-const jskosPackage = JSON.parse(await fs.readFile(path.join(__dirname, "../jskos/package.json"), "utf8"))
+const jskosPackage = JSON.parse(await fs.readFile(path.join(jskosPath, "package.json"), "utf8"))
 await fs.writeFile(path.join(__dirname, "../src/jskos-version.js"), `export default "${jskosPackage.version}"`)
