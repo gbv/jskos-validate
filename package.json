@@ -49,14 +49,14 @@
   ],
   "author": "Stefan Peters",
   "devDependencies": {
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.25.1",
     "esbuild-plugin-ifdef": "^1.0.1",
-    "eslint": "~9.11",
-    "eslint-config-gbv": "~2.1",
-    "glob": "^10.4.5",
+    "eslint": "~9.22",
+    "eslint-config-gbv": "~2.6",
+    "glob": "^11.0.1",
     "license-checker": "^25.0.1",
     "lint-staged": "^15.2.10",
-    "mocha": "^10.7.3",
+    "mocha": "^11.1.0",
     "pre-commit": "^1.0.10",
     "yesno": "^0.4.0"
   },
@@ -64,7 +64,7 @@
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "ajv-formats-draft2019": "^1.6.1",
-    "jskos": "https://github.com/gbv/jskos/tarball/main#9420c87",
+    "jskos": "https://github.com/gbv/jskos/tarball/main#ea63f27",
     "jskos-tools": "^1.0.42"
   }
 }
