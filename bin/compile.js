@@ -42,7 +42,7 @@ addFormats(ajv.strict)
 addFormatsDraft2019(ajv.lax)
 addFormatsDraft2019(ajv.strict)
   
-const jskosPath = path.join(__dirname, "../node_modules/jskos")
+const jskosPath = path.join(__dirname, "../jskos")
 
 for (const type of types) {
   const schemaFile = path.join(jskosPath, `schemas/${type}.schema.json`)

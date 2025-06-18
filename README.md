@@ -157,7 +157,7 @@ After running this, GitHub Actions will **automatically publish the new version 
 
 ### Updating JSKOS Spec/Schemas
 
-To update the dependency on the JSKOS JSON Schemas, update the commit hash in the corresponding entry in `package.json` to the latest commit hash in the [JSKOS repository](https://github.com/gbv/jskos), then run `npm i`.
+To update the dependency on the JSKOS JSON Schemas, update the `jskos` submodule referencing the [JSKOS repository](https://github.com/gbv/jskos).
 
 ## Contribute
 
