@@ -1,3 +1,11 @@
+## 1.1.5
+
+* Anticipate changes in JSKOS 0.7.0
+
+## 1.1.1
+
+* Update to JSKOS 0.6.0
+
 ## 1.0.1
 
 * Fix broken JSKOS build, introduce pre-release JSKOS Schema > 0.6.0
