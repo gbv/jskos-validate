@@ -3,7 +3,7 @@
 const expectedTypes = {
   concept: "http://www.w3.org/2004/02/skos/core#Concept",
   scheme: "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-  registry: "http://purl.org/cld/cdtype/CatalogueOrIndex",
+  registry: "http://www.w3.org/ns/dcat#Catalog",
   distribution: "http://www.w3.org/ns/dcat#Distribution",
   concordance: "http://rdfs.org/ns/void#Linkset",
   mapping: [
