@@ -49,13 +49,13 @@
   ],
   "author": "Jakob Voß",
   "devDependencies": {
-    "esbuild": "^0.25.1",
+    "esbuild": "^0.27.2",
     "esbuild-plugin-ifdef": "^1.0.1",
-    "eslint": "~9.22",
+    "eslint": "^9.22",
     "eslint-config-gbv": "~2.6",
-    "glob": "^11.0.1",
+    "glob": "^13.0.0",
     "license-checker": "^25.0.1",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^16.2.7",
     "mocha": "^11.1.0",
     "pre-commit": "^1.0.10",
     "yesno": "^0.4.0"
