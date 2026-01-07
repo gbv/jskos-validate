@@ -3,7 +3,7 @@ import fs from "node:fs"
 import assert from "node:assert"
 import { validate } from "../src/validate.js"
 
-let types = ["resource", "item", "concept", "scheme", "mapping", "concordance", "registry", "distribution", "occurrence", "bundle", "annotation"]
+let types = ["resource", "item", "concept", "scheme", "mapping", "concordance", "registry", "distribution", "occurrence", "bundle", "dataset", "service", "annotation"]
 let examples = {}
 
 // Import local examples
@@ -31,7 +31,7 @@ let files = glob.sync("jskos/examples/*.json")
 for (let file of files) {
   let type = null
   for (let possibleType of types) {
-    if (file.match(possibleType + "[./]")) {
+    if (file.endsWith(`${possibleType}.json`)) {
       type = possibleType
       break
     }
@@ -64,7 +64,7 @@ describe("JSKOS JSON Schemas", () => {
 
   // Validate difference object types
   for (let type of types) {
-    let typePlural = type + "s"
+    let typePlural = type == "registry" ? "registries" : `${type}s`
     const validator = validate[type]
     describe(typePlural, () => {
       for (let { object, expected, file } of examples[type]) {
@@ -77,6 +77,9 @@ describe("JSKOS JSON Schemas", () => {
           for (let object of objects) {
             const result = validator(object)
 
+            if (result !== expected) {
+              console.log(validator.errors)
+            }
             assert.equal(result, expected)
 
             if (expected) {

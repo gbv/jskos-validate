@@ -30,6 +30,7 @@ import * as jskos from "jskos-tools"
 const types = [
   "resource", "item", "bundle",
   "concept", "scheme", "mapping", "concordance", "registry", "distribution",
+  "service", "dataset",
   "occurrence", "annotation",
 ]
 
@@ -62,6 +63,9 @@ for (let type of types) {
     if (typeFail) {
       errors.push(typeFail)
     }
+
+    // additional constraints not included in JSON Schema
+    // TODO: add checking registry
 
     if (type === "scheme" && rememberSchemes && !errors.length && data.uri) {
       const found = schemeList.findIndex(s => jskos.compare(s, data))

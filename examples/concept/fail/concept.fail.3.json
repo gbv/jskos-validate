@@ -6,5 +6,5 @@
       }
     }
   ],
-  "$comment": "Testing nested concepts. Should fail because topConceptOf should be a set/array."
+  "_comment": "Testing nested concepts. Should fail because topConceptOf should be a set/array."
 }
