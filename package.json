@@ -5,7 +5,7 @@
   "homepage": "https://github.com/gbv/jskos-validate",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gbv/jskos-validate.git"
+    "url": "git+https://github.com/gbv/jskos-validate.git"
   },
   "bugs": {
     "url": "https://github.com/gbv/jskos-validate/issues"
