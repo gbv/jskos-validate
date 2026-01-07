@@ -73,7 +73,7 @@ for (let type of types) {
 
     const compiled = unknownFields ? laxCompiled[type] : strictCompiled[type]
     const result = compiled(data)
-    const errors = compiled.errors || []
+    const errors = compiled.errors || [] // TODO: map to Data Validation Error Format
 
     const typeFail = typeError(data, type)
     if (typeFail) {

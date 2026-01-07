@@ -5,7 +5,8 @@ const expectedTypes = {
   scheme: "http://www.w3.org/2004/02/skos/core#ConceptScheme",
   registry: "http://www.w3.org/ns/dcat#Catalog",
   distribution: "http://www.w3.org/ns/dcat#Distribution",
-  concordance: "http://rdfs.org/ns/void#Linkset",
+  service: "http://www.w3.org/ns/dcat#DataService",
+  concordance: "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence",
   mapping: [
     "http://www.w3.org/2004/02/skos/core#mappingRelation",
     "http://www.w3.org/2004/02/skos/core#closeMatch",
@@ -23,21 +24,22 @@ export default (obj, type) => {
     return
   }
 
-
-  if (type === "annotation" && obj.type !== "Annotation") {
-    return { message: "annotation type must be \"Annotation\"" }
-  } 
-
-  if (!Array.isArray(obj.type)) {
-    return { message: `${type} type must be an array` }
-  } else if (obj.type.length) {
-
+  if (obj.type?.length) {
     if (type === "mapping") {
       if (!expect.find(t => obj.type[0] === t)) {
-        return { message: "mapping type must be a SKOS mapping property" }
+        return {
+          message: "mapping type must be a SKOS mapping property",
+          position: { jsonpointer: "/type" },
+        }
       }
     } else if (obj.type[0] !== expect) {
-      return { message: `${type} type must be "${expect}"` }
+      if (type === "concordance" && obj.type[0] === "http://rdfs.org/ns/void#Linkset") {
+        return // allow for backwards compatibility
+      }
+      return {
+        message: `${type} type must be "${expect}"`,
+        position: { jsonpointer: "/type/0" },
+      }
     }
   }
 }
