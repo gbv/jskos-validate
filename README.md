@@ -20,14 +20,12 @@ This repository contains tools for validating [JSKOS data](http://gbv.github.io/
   - [errors and errorMessages](#errors-and-errormessages)
   - [version](#version)
 - [Maintainers](#maintainers)
-- [Publish](#publish)
-  - [Updating JSKOS Spec/Schemas](#updating-jskos-specschemas)
 - [Contribute](#contribute)
+  - [Publish](#publish)
+  - [Updating JSKOS Spec/Schemas](#updating-jskos-specschemas)
 - [License](#license)
 
 ## Install
-
-For CLI usage, better use a client such as [jskos-cli](https://www.npmjs.com/package/jskos-cli).
 
 Install as dependency to your Node project (requires Node.js 18 or later):
 
@@ -37,20 +35,9 @@ npm i jskos-validate
 
 We are also providing a browser bundle: https://cdn.jsdelivr.net/npm/jskos-validate@1/dist/jskos-validate.js It will be available under the global name `JSKOS_VALIDATE` which is an object with the member `validate` (see below).
 
-Or clone the current version for development:
-
-```bash
-git clone https://github.com/gbv/jskos-validate.git
-cd jskos-validate
-npm ci
-npm run build
-```
-
-**Note:** As of v1, the package includes *precompiled JSON Schemas*. This means that the schemas won't have to be compiled on first import, but the package size is larger.
-
 ## Usage
 
-As of v1, import the package as follows:
+For CLI usage, better use a client such as [jskos-cli](https://www.npmjs.com/package/jskos-cli).
 
 ```js
 // ESM
@@ -61,7 +48,7 @@ const { validate } = require("jskos-validate")
 const { validate } = JSKOS_VALIDATE
 ```
 
-This module provides validation methods for each [JSKOS object type](http://gbv.github.io/jskos/jskos.html#object-types) based on JSON Schemas and additional constraints.
+This module provides validation methods for each [JSKOS object type](http://gbv.github.io/jskos/#object-types) based on JSON Schemas and additional constraints.
 
 ```js
 let concept = { ... }
@@ -129,10 +116,30 @@ validate.version // 0.5.4
 
 ## Maintainers
 
-- [@stefandesu](https://github.com/stefandesu)
 - [@nichtich](https://github.com/nichtich)
 
-## Publish
+## Contribute
+
+Please use [GitHub issues](https://github.com/gbv/jskos-validate/issues) for bug reports, feature requests or questions.
+
+PRs are accepted **against the `dev` branch** only.
+
+If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+For local development first clone the current version for development:
+
+```bash
+git clone https://github.com/gbv/jskos-validate.git
+cd jskos-validate
+git checkout dev
+npm ci
+npm run test
+npm run build
+```
+
+Coding style can be checked and fixed with `npm lint` and `npm fix`, respectively.
+
+### Publish
 
 Please work on the `dev` branch during development (or better yet, develop in a feature branch and merge into `dev` when ready).
 
@@ -153,19 +160,11 @@ This will:
 - Push `main` with tags
 - Switch back to `dev`
 
-After running this, GitHub Actions will **automatically publish the new version to npm**. It will also create a new GitHub Release draft. Please **edit and publish the release draft manually**.
+After running this, GitHub Actions will **automatically publish the new version to npm**.
 
 ### Updating JSKOS Spec/Schemas
 
 To update the dependency on the JSKOS JSON Schemas, update the `jskos` submodule referencing the [JSKOS repository](https://github.com/gbv/jskos).
-
-## Contribute
-
-Please use [GitHub issues](https://github.com/gbv/jskos-validate/issues) for bug reports, feature requests or questions.
-
-PRs accepted **against the `dev` branch**.
-
-Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
 

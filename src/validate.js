@@ -2,7 +2,7 @@
  * Validate JSKOS objects.
  *
  * This module provides validation methods for each
- * [JSKOS object type](http://gbv.github.io/jskos/jskos.html#object-types)
+ * [JSKOS object type](http://gbv.github.io/jskos/#object-types)
  * based on JSON Schemas and additional constraints.
  *
  * <pre>
