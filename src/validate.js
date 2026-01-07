@@ -3,7 +3,7 @@
  *
  * This module provides validation methods for each
  * [JSKOS object type](http://gbv.github.io/jskos/jskos.html#object-types)
- * based on JSON Schemas.
+ * based on JSON Schemas and additional constraints.
  *
  * <pre>
  * const validate = require("jskos-validate")
@@ -14,18 +14,34 @@
  * let mapping = { ... }
  * validate.mapping(mapping) // returns true or false
  *
- * ...
+ * // errors can be inspected as side-effect
+ * if (validate.mapping.errors.length) {
+ *   validate.mapping.errorMessages.forEach(console.error)
+ * }
  * </pre>
+ *
+ * Validation options can be passed with a config object as second argument.
+ * The following configuration fields are supported:
+ *
+ * - unknownFields
+ * - schemes
+ * - rememberSchemes
+ * - knownSchemes
  *
  * @module validate
  * @memberof module:jskos-validate
-  */
+ */
 
-// Version of JSKOS specification that this module is based on
 import jskosVersion from "./jskos-version.js"
 
 import typeError from "./types.js"
 import * as jskos from "jskos-tools"
+import checkConcept from "./concept.js"
+// import checkRegistry from "./registry.js"
+
+const constraints = {
+  concept: checkConcept,
+}
 
 const types = [
   "resource", "item", "bundle",
@@ -64,9 +80,6 @@ for (let type of types) {
       errors.push(typeFail)
     }
 
-    // additional constraints not included in JSON Schema
-    // TODO: add checking registry
-
     if (type === "scheme" && rememberSchemes && !errors.length && data.uri) {
       const found = schemeList.findIndex(s => jskos.compare(s, data))
       if (found >= 0) {
@@ -76,39 +89,10 @@ for (let type of types) {
       }
     }
 
-    if (type === "concept") {
-      const { uri, notation, inScheme } = data
-
-      if (knownSchemes && !(inScheme && inScheme.length)) {
-        errors.push({ message: `concept ${uri} must have inScheme` })
-        return
-      }
-
-      (inScheme||[]).forEach(scheme => {
-        const storedScheme = schemeList.find(s => jskos.compare(s, scheme))
-
-        if (knownSchemes) {
-          if (!storedScheme) {
-            errors.push({ message: `concept ${uri} must be inScheme a known vocabulary` })
-            return
-          }
-          scheme = storedScheme
-        } else if(storedScheme) {
-          scheme = { ...storedScheme, ...scheme }
-        }
-
-        const { namespace, notationPattern, uriPattern } = scheme
-
-        if (uri && namespace && !uri.startsWith(namespace)) {
-          errors.push({ message: `concept URI ${uri} does not match namespace ${namespace}` })
-        }
-        if (uri && uriPattern && !uri.match(uriPattern)) {
-          errors.push({ message: `concept URI ${uri} does not match ${uriPattern}` })
-        }
-        if (notation && notation.length && notationPattern && !notation[0].match(notationPattern)) {
-          errors.push({ message: `concept notation ${notation[0]} does not match ${notationPattern}` })
-        }
-      })
+    const check = constraints[type]
+    if (check) {
+      const errs = check(data, { ...options, schemeList })
+      errors.push(...(errs || []))
     }
 
     validate[type].errors = errors
