@@ -1,17 +1,13 @@
-
 name: Test and build
 
 on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [ 18.x, 20.x, 22.x ]
-
+        node-version: [ 18.x, 20.x, 22.x, 24.x ]
     steps:
     - uses: actions/checkout@v4
       with:
