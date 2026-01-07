@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Update to JSKOS 0.7.1 with new release workflow
+
 ## 1.1.5
 
 * Anticipate changes in JSKOS 0.7.0
