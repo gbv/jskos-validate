@@ -1,3 +1,8 @@
+## 1.2.1
+
+* Use Data Validation Error Format
+* Extend validation of registry
+
 ## 1.2.0
 
 * Update to JSKOS 0.7.1 with new release workflow

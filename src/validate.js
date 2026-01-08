@@ -35,14 +35,16 @@
 import jskosVersion from "./jskos-version.js"
 
 import typeError from "./types.js"
-import * as jskos from "jskos-tools"
-import checkConcept from "./concept.js"
-// import checkRegistry from "./registry.js"
+import jskos from "jskos-tools"
 
 import ajvError from "./ajv-error.js"
 
+import checkConcept from "./concept.js"
+import checkRegistry from "./registry.js"
+
 const constraints = {
   concept: checkConcept,
+  registry: checkRegistry,
 }
 
 const types = [

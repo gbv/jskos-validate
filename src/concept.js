@@ -1,4 +1,4 @@
-import * as jskos from "jskos-tools"
+import jskos from "jskos-tools"
 
 export default (data, { knownSchemes, schemeList } = {}) => {
   const { uri, notation, inScheme } = data
