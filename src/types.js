@@ -34,7 +34,7 @@ export default (obj, type) => {
       }
     } else if (obj.type[0] !== expect) {
       if (type === "concordance" && obj.type[0] === "http://rdfs.org/ns/void#Linkset") {
-        return // allow for backwards compatibility
+        return // allow for backwards compatibility. TODO: emit warning
       }
       return {
         message: `${type} type must be "${expect}"`,

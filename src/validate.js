@@ -93,8 +93,7 @@ for (let type of types) {
 
     const check = constraints[type]
     if (check) {
-      const errs = check(data, { ...options, schemeList })
-      errors.push(...(errs || []))
+      errors.push(...check(data, { ...options, schemeList }))
     }
 
     validate[type].errors = errors
