@@ -6,7 +6,7 @@
  * based on JSON Schemas and additional constraints.
  *
  * <pre>
- * const validate = require("jskos-validate")
+ * import { validate } from "jskos-validate"
  *
  * let concept = { ... }
  * validate.concept(concept) // returns true or false
@@ -38,6 +38,8 @@ import typeError from "./types.js"
 import * as jskos from "jskos-tools"
 import checkConcept from "./concept.js"
 // import checkRegistry from "./registry.js"
+
+import ajvError from "./ajv-error.js"
 
 const constraints = {
   concept: checkConcept,
@@ -73,7 +75,7 @@ for (let type of types) {
 
     const compiled = unknownFields ? laxCompiled[type] : strictCompiled[type]
     const result = compiled(data)
-    const errors = compiled.errors || [] // TODO: map to Data Validation Error Format
+    const errors = (compiled.errors || []).map(ajvError)
 
     const typeFail = typeError(data, type)
     if (typeFail) {
@@ -96,19 +98,11 @@ for (let type of types) {
     }
 
     validate[type].errors = errors
-    validate[type].errorMessages = errors.map(goodErrorMessage)
+    validate[type].errorMessages = errors.map(({ message, position }) =>
+      position?.jsonpointer ? `${message} at ${position.jsonpointer}` : message)
 
     return result && !errors.length
   }
 }
 
-const goodErrorMessage = e => {
-  let { message } = e
-  if (e.instancePath) {
-    message = `${e.instancePath} ${message}`
-  }
-  if (e.keyword == "additionalProperties") {
-    message += ` '${e.params.additionalProperty}'`
-  }
-  return message
-}
+

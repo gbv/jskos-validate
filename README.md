@@ -94,7 +94,7 @@ This option is ignored if `knownSchemes` is set because in this case the set of 
 
 ### errors and errorMessages
 
-Property `errors` and `errorMessages` of the validation function contain errors in detailled format and as array of error message strings, respectively.
+Property `errors` and `errorMessages` of the validation function contain errors in [Data Validation Error Format](https://gbv.github.io/validation-error-format/) and as array of error message strings, respectively.
 
 ```js
 if (!validate.concept(data)) {

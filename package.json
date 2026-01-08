@@ -29,7 +29,7 @@
     "build": "node bin/build.js",
     "compile": "node bin/compile.js",
     "test": "npm run compile && mocha",
-    "coverage": "c8 --skip-full npm test",
+    "coverage": "npm run compile && c8 --src src --all mocha",
     "lint": "eslint",
     "fix": "eslint --fix",
     "lint-staged": "lint-staged",
