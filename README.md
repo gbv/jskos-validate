@@ -139,6 +139,8 @@ npm run build
 
 Coding style can be checked and fixed with `npm lint` and `npm fix`, respectively.
 
+Test coverage can be shown with `npm run coverage`.
+
 ### Publish
 
 Please work on the `dev` branch during development (or better yet, develop in a feature branch and merge into `dev` when ready).
