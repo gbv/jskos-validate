@@ -39,13 +39,11 @@ import jskos from "jskos-tools"
 
 import ajvError from "./ajv-error.js"
 
-import checkConcept from "./concept.js"
-import checkRegistry from "./registry.js"
+import concept from "./concept.js"
+import registry from "./registry.js"
+import mapping from "./mapping.js"
 
-const constraints = {
-  concept: checkConcept,
-  registry: checkRegistry,
-}
+const constraints = { concept, registry, mapping }
 
 const types = [
   "resource", "item", "bundle",
