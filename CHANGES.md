@@ -1,3 +1,7 @@
+## 1.2.2
+
+* Add back examples in node package
+
 ## 1.2.1
 
 * Use Data Validation Error Format
