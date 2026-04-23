@@ -1,3 +1,6 @@
+## 1.2.3
+
+- Update JSON Schema to allow JSKOS field basedOn (#24)
 
 ## 1.2.2
 
