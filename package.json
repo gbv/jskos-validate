@@ -52,7 +52,7 @@
   "author": "Jakob Voß",
   "devDependencies": {
     "c8": "^11.0.0",
-    "esbuild": "^0.27.2",
+    "esbuild": "^0.28.0",
     "esbuild-plugin-ifdef": "^1.0.1",
     "eslint": "^9.22",
     "eslint-config-gbv": "^2.6.0",
